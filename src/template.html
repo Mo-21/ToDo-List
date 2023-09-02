@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <div class="content">
+      <header class="heading">To//DoIt</header>
+      <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-2 column-center container-heading">Just Do It</div>
+        </div>
+        <div class="row justify-content-center main-row">
+            <div class="col-md-10">Hello</div>
+        </div>
+        <div class="row justify-content-center">
+            <button class="col-md-2 btn btn-primary" type="button">Add One</button>
+        </div>
+        </div>
+      </div>
+
+    <form>
+      <div class="row mb-3">
+        <label for="inputEmail3" class="col-sm-2 col-form-label">Task</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputEmail3">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputDate3" class="col-sm-2 col-form-label">Due Date</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="inputDate3">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="exampleFormControlTextarea1" class="col-sm-2 col-form-label">Description</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="exampleFormControlTextarea1">
+        </div>
+      </div>
+      <fieldset class="row mb-3">
+        <legend class="col-form-label col-sm-2 pt-0">Priority</legend>
+        <div class="col-sm-10 button-group">
+          <div class="form-check form-check-inline">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-success" for="btnradio1">Normal</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-warning" for="btnradio2">Medium</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-danger" for="btnradio3">High</label>
+          </div>
+        </div>
+      </fieldset>
+      <button type="submit" class="btn btn-primary">Done</button>
+    </form>
+    </div>
+  </body>
+</html>
