@@ -6,22 +6,16 @@
 }
 
 .container {
-  margin-top: 50px;
   padding: 20px;
-  .container-heading {
-    margin-bottom: 10px;
-    background-color: orange;
-    border-radius: 25px;
-  }
-  .main-row {
-    min-height: 500px;
+  margin-top: 10px;
+  min-height: 500px;
+  border: solid black 2px;
+  border-radius: 25px;
+
+  .task {
+    padding: 6px;
     border: solid black 2px;
-    border-radius: 25px;
-  }
-  .btn {
-    margin-top: 10px;
-    max-width: 120px;
-    max-height: 40px;
+    background-color: rgba(255, 166, 0, 0.616);
   }
 }
 
@@ -34,25 +28,48 @@
   @include flexCenter();
 }
 
-form {
-  padding: 40px;
-  #formControlTextarea1 {
-    max-width: 200px;
+.input-group {
+  margin-bottom: 4px;
+  @include flexCenter();
+  .input-group-text {
+    width: 120px;
+    border: green solid;
   }
-  fieldset {
-    max-width: 800px;
-    legend {
-      display: block;
-    }
-    .btn-check {
-      width: 120px;
-      height: 40px;
-    }
-    .form-check {
-      padding: 0px;
-    }
-    .button-group {
-      @include flexCenter();
-    }
+  .form-control {
+    max-width: 50%;
+    border: black solid;
+    border-radius: 0px;
   }
+  .btn-check {
+    margin-left: 30px;
+  }
+  #priority {
+    border-color: yellow;
+  }
+}
+
+.add-button {
+  margin-top: 10px;
+  min-width: 137px;
+  background-color: #ea1538;
+  color: white;
+}
+
+.del {
+  display: inline-block;
+  background-color: red;
+  color: white;
+  margin-left: auto;
+  border: solid black 2px;
+  border-radius: 10px;
+  padding: 2px 6px;
+  cursor: pointer;
+
+  :hover {
+    transform: scale(0.9);
+  }
+}
+
+.done {
+  opacity: 0.5;
 }
