@@ -18,6 +18,7 @@
           placeholder="Get Jane from School"
           aria-label="Username"
           aria-describedby="basic-addon1"
+          id="task-input"
           required
         />
       </div>
@@ -26,17 +27,18 @@
         <span class="input-group-text" id="basic-addon1">Due Date</span>
         <input
           type="date"
-          class="form-control"
+          class="form-control due-date"
           placeholder="Get Jimmy from School"
           aria-label="Username"
           aria-describedby="basic-addon1"
+          id="due-date-input"
           required
         />
       </div>
 
       <div class="input-group">
-        <span class="input-group-text">Description</span>
-        <input class="form-control" aria-label="With textarea" placeholder="He finishes at 2:00 PM"></input>
+        <span class="input-group-text">Note</span>
+        <input class="form-control note" aria-label="With textarea" placeholder="She finishes at 2:00 PM"></input>
       </div>
 
       <div class="input-group">
@@ -67,6 +69,11 @@
         <button class="col-2 btn add-button" id="add-button" type="button">
           Add It
         </button>
+      </div>
+
+      <!-- Bootstrap Alert -->
+      <div id="alert" class="alert alert-danger" style="display: none;">
+        Please make sure to enter a task and due date.
       </div>
 
       <div class="container"></div>

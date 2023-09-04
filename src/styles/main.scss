@@ -11,11 +11,56 @@
   min-height: 500px;
   border: solid black 2px;
   border-radius: 25px;
-
   .task {
+    display: grid;
+    margin-bottom: 4px;
+    grid-template: repeat(3, 30px) / repeat(2, 1fr);
     padding: 6px;
     border: solid black 2px;
     background-color: rgba(255, 166, 0, 0.616);
+  }
+  .task-title {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  .del {
+    width: 67px;
+    text-align: center;
+    background-color: red;
+    margin-left: auto;
+    font-weight: bold;
+    color: white;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding: 2px 6px;
+    cursor: pointer;
+    margin-bottom: 2px;
+  }
+  .note {
+    grid-row: 3/4;
+    grid-column: 1/2;
+  }
+  .due-date {
+    grid-row: 2/3;
+    grid-column: 1/2;
+    margin-bottom: 8px;
+  }
+  .done-task {
+    @extend .del;
+    grid-column: 2/3;
+    grid-row: 2/3;
+    background-color: green;
+  }
+  .edit-task {
+    @extend .del;
+    grid-column: 2/3;
+    grid-row: 3/4;
+    background-color: skyblue;
+  }
+  .save-task {
+    @extend .del;
+    grid-column: 2/3;
+    background-color: yellowgreen;
   }
 }
 
@@ -33,7 +78,7 @@
   @include flexCenter();
   .input-group-text {
     width: 120px;
-    border: green solid;
+    border: #2596be solid;
   }
   .form-control {
     max-width: 50%;
@@ -44,8 +89,12 @@
     margin-left: 30px;
   }
   #priority {
-    border-color: yellow;
+    border-color: #2596be;
   }
+}
+
+.note {
+  font-style: italic;
 }
 
 .add-button {
@@ -53,21 +102,6 @@
   min-width: 137px;
   background-color: #ea1538;
   color: white;
-}
-
-.del {
-  display: inline-block;
-  background-color: red;
-  color: white;
-  margin-left: auto;
-  border: solid black 2px;
-  border-radius: 10px;
-  padding: 2px 6px;
-  cursor: pointer;
-
-  :hover {
-    transform: scale(0.9);
-  }
 }
 
 .done {
