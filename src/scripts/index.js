@@ -64,7 +64,7 @@ function addTasksToScreen(arrayOfTasks) {
       divTaskTitle.className = "task done";
     }
 
-    divTaskTitle.appendChild(document.createTextNode(`Task: ${task.task}`));
+    divTaskTitle.appendChild(document.createTextNode(task.task));
 
     const spanDel = document.createElement("span");
     spanDel.className = "del";
@@ -85,8 +85,8 @@ function addTasksToScreen(arrayOfTasks) {
     const spanEdit = document.createElement("span");
     spanEdit.className = "edit-task";
     spanEdit.appendChild(document.createTextNode("Edit"));
-    spanEdit.onclick = function (event) {
-      editTextTitle(divTaskTitle, event);
+    spanEdit.onclick = function () {
+      editTextTitle(divTaskTitle);
     };
 
     const divTaskDueDate = document.createElement("div");
@@ -142,39 +142,39 @@ function changeTaskStatus(taskId) {
 }
 
 //edit title
-// function editTextTitle(divTaskTitle, event) {
-//   divTaskTitle.contentEditable = true;
-//   divTaskTitle.focus();
+function editTextTitle(divTaskTitle, event) {
+  divTaskTitle.contentEditable = true;
+  divTaskTitle.focus();
 
-//   const saveButton = document.querySelectorAll(".save-task");
-//   saveButton.forEach((save) => {
-//     if (
-//       event.target.parentElement.getAttribute("data-id") ===
-//       divTaskTitle.parentElement.getAttribute("data-id")
-//     ) {
-//       save.style.display = "inline";
-//     }
-//   });
-// }
+  const saveButton = document.querySelectorAll(".save-task");
+  saveButton.forEach((save) => {
+    addEventListener("click", () => {
+      save.style.display = "inline";
+    });
+  });
+}
 
-//save changes
-// function saveEditedText(divTaskTitle) {
-//   const editedText = divTaskTitle.innerText;
-//   const saveButton = document.querySelectorAll(".save-task");
-//   saveButton.forEach((save) =>
-//     addEventListener("click", () => {
-//       save.style.display = "none";
-//       createNewText(save.parentElement.getAttribute("data-id"), editedText);
-//     })
-//   );
+// save changes
+function saveEditedText(divTaskTitle) {
+  const editedText = divTaskTitle.innerText;
+  const newId = divTaskTitle.parentElement.getAttribute("data-id");
 
-//   divTaskTitle.contentEditable = false;
-// }
+  const saveButton = document.querySelectorAll(".save-task");
+  saveButton.forEach((save) =>
+    addEventListener("click", () => {
+      save.style.display = "none";
+      save.id = newId;
+      createNewText(newId, editedText);
+    })
+  );
+  divTaskTitle.contentEditable = false;
+}
 
 //apply changes
 function createNewText(taskId, editedText) {
   for (let i = 0; i < arrayOfTasks.length; i++) {
     if (arrayOfTasks[i].id == taskId) {
+      arrayOfTasks[i].task = "";
       arrayOfTasks[i].task = editedText;
     }
   }
