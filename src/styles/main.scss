@@ -1,4 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
+@font-face {
+  font-family: Caprasimo;
+  src: url(../assets/Space_Mono/SpaceMono-Regular.ttf);
+}
+
+body {
+  font-family: Caprasimo;
+  background-color: #101820;
+}
 
 @mixin flexCenter {
   display: flex;
@@ -6,18 +15,19 @@
 }
 
 .container {
+  background-color: #101820;
   padding: 20px;
   margin-top: 10px;
   min-height: 500px;
-  border: solid black 2px;
+  border: solid #0d6efd 2px;
   border-radius: 25px;
   .task {
     display: grid;
     margin-bottom: 4px;
     grid-template: repeat(3, 30px) / repeat(2, 1fr);
     padding: 6px;
-    border: solid black 2px;
-    background-color: rgba(255, 166, 0, 0.616);
+    border: solid #0d6efd 2px;
+    background-color: white;
   }
   .task-title {
     grid-row: 1/2;
@@ -25,7 +35,7 @@
     font-weight: bold;
   }
   .del {
-    width: 67px;
+    width: 72px;
     text-align: center;
     background-color: red;
     margin-left: auto;
@@ -74,10 +84,17 @@
 .heading {
   @include flexCenter();
   padding: 20px;
+  background-color: #fee715;
+  font-size: 1.8rem;
+  font-weight: bold;
 }
 
 .column-center {
   @include flexCenter();
+}
+
+.content {
+  background-color: #101820;
 }
 
 .input-group {
@@ -85,18 +102,18 @@
   @include flexCenter();
   .input-group-text {
     width: 120px;
-    border: #2596be solid;
+    border: #0d6efd solid;
   }
   .form-control {
     max-width: 50%;
-    border: black solid;
+    border: #0d6efd solid;
     border-radius: 0px;
   }
   .btn-check {
     margin-left: 30px;
   }
   #priority {
-    border-color: #2596be;
+    border-color: #0d6efd;
   }
 }
 
@@ -104,11 +121,13 @@
   font-style: italic;
 }
 
-.add-button {
-  margin-top: 10px;
-  min-width: 137px;
-  background-color: #ea1538;
-  color: white;
+.btn-group {
+  max-width: 400px;
+  .add-button {
+    margin-top: 10px;
+    min-width: 137px;
+    color: white;
+  }
 }
 
 .done {

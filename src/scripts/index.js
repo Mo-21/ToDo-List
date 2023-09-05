@@ -1,8 +1,10 @@
-// import CreateTodoItem from "./classes";
+import creatingNewFolder from "./classes";
 import "../styles/main.scss";
 import * as bootstrap from "bootstrap";
 
 const addButton = document.getElementById("add-button");
+const createButton = document.getElementById("create-button");
+const navTabs = document.querySelector(".nav-tabs");
 const container = document.querySelector(".container");
 const inputs = document.querySelectorAll(".form-control");
 const radioButtons = document.getElementsByName("options-outlined");
@@ -17,6 +19,7 @@ if (localStorage.getItem("tasks")) {
   arrayOfTasks = JSON.parse(localStorage.getItem("tasks"));
 }
 
+//add task button trigger
 addButton.onclick = function () {
   let inputsValuesArray = [];
 
@@ -38,6 +41,11 @@ addButton.onclick = function () {
       alertDiv.style.display = "none";
     }, 5000);
   }
+};
+
+//create folder button trigger
+createButton.onclick = function () {
+  creatingNewFolder();
 };
 
 function addTasksToArray(inputsValuesArray) {
@@ -113,6 +121,7 @@ function addTasksToScreen(arrayOfTasks) {
     } else {
       divTaskPriority.style.backgroundColor = "#ffc107";
     }
+
     // Append Other Task Elements To Title Div
     divTask.appendChild(spanDel);
     divTask.appendChild(spanDone);
