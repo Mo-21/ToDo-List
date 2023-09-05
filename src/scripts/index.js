@@ -5,7 +5,7 @@ import * as bootstrap from "bootstrap";
 const addButton = document.getElementById("add-button");
 const container = document.querySelector(".container");
 const inputs = document.querySelectorAll(".form-control");
-const radioButtons = document.querySelectorAll(".btn-check");
+const radioButtons = document.getElementsByName("options-outlined");
 const taskInput = document.getElementById("task-input");
 const dueDateInput = document.getElementById("due-date-input");
 
@@ -24,6 +24,9 @@ addButton.onclick = function () {
     inputs.forEach((input) => {
       inputsValuesArray.push(input.value);
     });
+    radioButtons.forEach((radioButton) => {
+      if (radioButton.checked) inputsValuesArray.push(radioButton.value);
+    });
     addTasksToArray(inputsValuesArray);
     inputs.forEach((input) => {
       input.value = "";
@@ -41,7 +44,8 @@ function addTasksToArray(inputsValuesArray) {
   const newTaskItem = new CreateTodoItem(
     inputsValuesArray[0],
     inputsValuesArray[1],
-    inputsValuesArray[2]
+    inputsValuesArray[2],
+    inputsValuesArray[3]
   );
   arrayOfTasks.push(newTaskItem);
   addTasksToScreen(arrayOfTasks);
@@ -90,19 +94,32 @@ function addTasksToScreen(arrayOfTasks) {
     };
 
     const divTaskDueDate = document.createElement("div");
-    const divTaskDescription = document.createElement("div");
-    divTaskDescription.classList.add("note");
     divTaskDueDate.appendChild(
       document.createTextNode(`Due Date: ${task.dueDate}`)
     );
     divTaskDueDate.classList.add("due-date");
+
+    const divTaskDescription = document.createElement("div");
     divTaskDescription.appendChild(document.createTextNode(task.description));
+    divTaskDescription.classList.add("note");
+
+    const divTaskPriority = document.createElement("div");
+    divTaskPriority.classList.add("priority");
+    divTaskPriority.appendChild(document.createTextNode(task.priority));
+    if (divTaskPriority.innerHTML === "Normal") {
+      divTaskPriority.style.backgroundColor = "#198754";
+    } else if (divTaskPriority.innerHTML === "High") {
+      divTaskPriority.style.backgroundColor = "#dc3545";
+    } else {
+      divTaskPriority.style.backgroundColor = "#ffc107";
+    }
     // Append Other Task Elements To Title Div
     divTask.appendChild(spanDel);
     divTask.appendChild(spanDone);
     divTask.appendChild(spanEdit);
     divTask.appendChild(spanSave);
     divTask.appendChild(divTaskTitle);
+    divTask.appendChild(divTaskPriority);
     divTask.appendChild(divTaskDueDate);
     divTask.appendChild(divTaskDescription);
     // Add Task Div To Tasks Container
@@ -125,7 +142,6 @@ container.addEventListener("click", (e) => {
 
 function deleteTasksFromStorage(taskId) {
   arrayOfTasks = arrayOfTasks.filter((task) => task.id != taskId);
-  console.log(arrayOfTasks);
   addTasksToLocalStorage(arrayOfTasks);
 }
 
@@ -194,11 +210,12 @@ function getTasksFromLocalStorage() {
 }
 
 class CreateTodoItem {
-  constructor(task, dueDate, description) {
+  constructor(task, dueDate, description, priority) {
     this.id = Date.now();
     this.task = task;
     this.dueDate = dueDate;
     this.description = description;
+    this.priority = priority;
     this.completed = false;
   }
 }
