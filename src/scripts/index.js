@@ -1,9 +1,7 @@
-import creatingNewFolder from "./classes";
 import "../styles/main.scss";
 import * as bootstrap from "bootstrap";
 
 const addButton = document.getElementById("add-button");
-const createButton = document.getElementById("create-button");
 const navTabs = document.querySelector(".nav-tabs");
 const container = document.querySelector(".container");
 const inputs = document.querySelectorAll(".form-control");
@@ -41,11 +39,6 @@ addButton.onclick = function () {
       alertDiv.style.display = "none";
     }, 5000);
   }
-};
-
-//create folder button trigger
-createButton.onclick = function () {
-  creatingNewFolder();
 };
 
 function addTasksToArray(inputsValuesArray) {
